@@ -1,0 +1,25 @@
+{% render 'image-slider' %}
+
+{% schema %}
+{
+  "name": "Featured",
+  "blocks": [
+     {
+       "name": "Slide",
+       "type": "slide",
+       "settings": [
+         {
+           "type": "image_picker",
+           "id": "image",
+           "label": "Image"
+         },
+        {
+            "type": "text",
+            "id": "caption",
+            "label": "Slide Caption"
+        }
+       ]
+     }
+   ]
+}
+{% endschema %}

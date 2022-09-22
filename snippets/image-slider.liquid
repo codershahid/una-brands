@@ -1,0 +1,33 @@
+<!-- This Reusable component get the schema data dynamically from the any section where it is rendered and in turn, will populate the unique content for different sections. -->
+<div class="image-slider">
+    {% for block in section.blocks %}
+    <div class="slide">
+        <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
+        <h4>{{ block.settings.caption }}</h4>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    .image-slider{
+        display: flex;
+        justify-content: center;
+        max-width: 1920px;
+        margin: 0 auto;
+        border: 1px solid grey;
+    }
+
+    .slide{
+        max-width: 340px;
+        padding: 0 1rem;
+        text-align: center;
+    }
+
+    .slide img{
+        width: 100%;
+    }
+
+    .slide h4{
+        text-transform: capitalize;
+    }
+</style>    
