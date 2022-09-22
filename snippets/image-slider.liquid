@@ -1,12 +1,24 @@
 <!-- This Reusable component get the schema data dynamically from the any section where it is rendered and in turn, will populate the unique content for different sections. -->
-<div class="image-slider">
-    {% for block in section.blocks %}
-    <div class="slide">
-        <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
-        <h4>{{ block.settings.caption }}</h4>
+
+{% if section.blocks.size > 3 %}
+    <div class="slick-slider">
+        {% for block in section.blocks %}
+            <div class="slide">
+                <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
+                <h4>{{ block.settings.caption }}</h4>
+            </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
+{% else %}
+    <div class="image-slider">
+        {% for block in section.blocks %}
+            <div class="slide">
+                <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
+                <h4>{{ block.settings.caption }}</h4>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
 
 <style>
     .image-slider{
@@ -14,7 +26,6 @@
         justify-content: center;
         max-width: 1920px;
         margin: 0 auto;
-        border: 1px solid grey;
     }
 
     .slide{
@@ -30,4 +41,13 @@
     .slide h4{
         text-transform: capitalize;
     }
-</style>    
+
+</style>  
+
+<script>
+    $(".slick-slider").slick({
+        slidesToShow: 3,
+        autoplay: true,
+        autoplaySpeed: 1000
+    });
+</script>
